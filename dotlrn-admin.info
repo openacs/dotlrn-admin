@@ -7,12 +7,12 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>t</singleton-p>
 
-    <version name="0.1d" url="http://openacs.org/repository/download/apm/dotlrn-admin-0.1d.apm">
+    <version name="2.1.0a2" url="http://openacs.org/repository/download/apm/dotlrn-admin-2.1.0a2.apm">
         <owner url="mailto:aegrumet@mit.edu">Andrew Grumet</owner>
         <summary>.LRN-wide admin pages.  Initially created as a singleton with automount at /dotlrn/dotlrn-admin.  These can be changed if and when .LRN supports multiple instances.</summary>
         <description format="text/plain">Contains pages and scripts for configuring .LRN --- managing users, departments, terms, classes and so on.</description>
 
-        <requires url="dotlrn" version="2.1.0a"/>
+        <requires url="dotlrn" version="2.1.0a2"/>
 
         <callbacks>
         </callbacks>
