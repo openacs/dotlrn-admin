@@ -31,7 +31,7 @@ ad_page_contract {
 }
 
 if {[empty_string_p $department_key]} {
-    ad_returnredirect "[dotlrn::get_admin_url]/classes"
+    ad_returnredirect "[dotlrn_admin::get_admin_url]/classes"
     ad_script_abort
 }
 
