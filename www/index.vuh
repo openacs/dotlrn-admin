@@ -1,0 +1,8 @@
+# This is a temporary navigational workaround.  The admin pages used
+# to live directly in the dotlrn package and a lot of existing
+# navigation still assumes that.
+set return_url [dotlrn::get_url]/[ad_conn path_info]
+if { [string length [ad_conn query]] > 0 } {
+    append return_url ?[ad_conn query]
+}
+ad_returnredirect $return_url
