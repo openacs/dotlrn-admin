@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <queryset>
-    <rdbms><type>postgres</type><version>7.2</version></rdbms>
+    <rdbms><type>postgresql</type><version>7.2</version></rdbms>
 
     <!-- AEG: This query has gotten pretty nasty.  Basically we need
          to provide the site-wide admin more information about
