@@ -99,9 +99,9 @@ set approve_user_url "/acs-admin/users/member-state-change?user_id=$user_id&memb
 set remove_user_url "\[<small><a href=\"[export_vars -base user-nuke {user_id}]\">Nuke</a></small>\]"
 
 # Used in some en_US messages in the adp file
-set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
-set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
-set subcommunities_pretty_name [parameter::get -localize -parameter subcommunities_pretty_name]
+set class_instances_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_name]
+set clubs_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter clubs_pretty_name]
+set subcommunities_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter subcommunities_pretty_name]
 
 set dual_approve_return_url [ns_urlencode [dotlrn_admin::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]
 

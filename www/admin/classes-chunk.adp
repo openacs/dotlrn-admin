@@ -40,7 +40,7 @@
     <tr bgcolor="#eeeeee">
       <th align="left" width="50%">
 <formtemplate id="department_form">
-        <%= [parameter::get -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+        <%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
 </formtemplate>
       </th>
     </tr>
@@ -51,9 +51,9 @@
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
 
     <tr>
-      <th align="left" width="30%"><%= [parameter::get -localize -parameter departments_pretty_name] %></th>
+      <th align="left" width="30%"><%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_name] %></th>
       <th align="left">#dotlrn.class_name#</th>
-      <th align="center" width="5%"><%= [parameter::get -localize -parameter class_instances_pretty_plural] %></th>
+      <th align="center" width="5%"><%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_plural] %></th>
       <th align="center" width="10%">#dotlrn.Actions#</th>
     </tr>
 

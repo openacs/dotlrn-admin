@@ -61,7 +61,7 @@ element create add_class_instance join_policy \
     -options [list [list [_ dotlrn.Open] open] [list "[_ dotlrn.Needs_Approval]" "needs approval"] [list [_ dotlrn.Closed] closed]]
 
 element create add_class_instance class_key \
-    -label "[parameter::get -localize -parameter classes_pretty_name] [_ dotlrn.Key]" \
+    -label "[parameter::get -package_id [dotlrn::get_package_id] -localize -parameter classes_pretty_name] [_ dotlrn.Key]" \
     -datatype text \
     -widget hidden \
     -value $class_key
@@ -105,10 +105,10 @@ if {[form is_valid add_class_instance]} {
 }
 
 # Used by en_US version of new_class_instance message
-set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
+set class_instances_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_name]
 
 set context_bar [list \
-                     [list classes [parameter::get -localize -parameter classes_pretty_plural]] \
+                     [list classes [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter classes_pretty_plural]] \
                      [list "class?class_key=$class_key" $class_name] \
                      [_ dotlrn.new_class_instance]]
 

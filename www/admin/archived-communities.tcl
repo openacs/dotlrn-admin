@@ -26,7 +26,7 @@ ad_page_contract {
     archived_comms:multirow
 }
 
-set groups_pretty_plural "[parameter::get -localize -parameter class_instances_pretty_plural] / [parameter::get -localize -parameter clubs_pretty_plural]"
+set groups_pretty_plural "[parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_plural] / [parameter::get -localize -parameter clubs_pretty_plural]"
 
 set title "[_ dotlrn.archived_groups]"
 set context_bar [list $title]

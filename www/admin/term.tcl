@@ -117,6 +117,6 @@ if {$term_id == -1} {
 }
 
 # Used by the en_US version of the no_class_instances message in the adp
-set class_instances_pretty_plural [parameter::get -localize -parameter class_instances_pretty_plural]
+set class_instances_pretty_plural [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_plural]
 
 ad_return_template

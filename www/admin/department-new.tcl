@@ -27,8 +27,8 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title "[_ dotlrn.New] [parameter::get -localize -parameter departments_pretty_name]"
-set context_bar [list [list departments [parameter::get -localize -parameter departments_pretty_plural]] [_ dotlrn.New]]
+set title "[_ dotlrn.New] [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_name]"
+set context_bar [list [list departments [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_plural]] [_ dotlrn.New]]
 
 form create add_department
 
