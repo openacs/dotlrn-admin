@@ -23,12 +23,12 @@ ad_page_contract {
 
 set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
 
-set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
+set admin_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter dotlrn_admin_pretty_name]
 set context_bar {}
 
 # Some en_US messages reuse these configurable pretty names
-set class_instances_pretty_plural [parameter::get -localize -parameter class_instances_pretty_plural]
-set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
+set class_instances_pretty_plural [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_plural]
+set clubs_pretty_plural [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter clubs_pretty_plural]
 
 set parameters_url [export_vars -base /shared/parameters { { package_id {[dotlrn::get_package_id]} } { return_url [ad_return_url] } }] 
 

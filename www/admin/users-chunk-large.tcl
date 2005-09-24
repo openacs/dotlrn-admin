@@ -30,7 +30,7 @@ if {![exists_and_not_null type]} {
 }
 
 if {![exists_and_not_null referer]} {
-    set referer "[dotlrn::get_admin_url]/users"
+    set referer "[dotlrn_admin::get_admin_url]/users"
 }
 
 set user_id [ad_conn user_id]

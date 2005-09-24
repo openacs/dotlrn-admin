@@ -33,8 +33,8 @@ if {![db_0or1row select_class_info {}]} {
     ad_script_abort
 }
 
-set title "[_ dotlrn.Edit] [parameter::get -localize -parameter classes_pretty_name] $pretty_name"
-set context_bar [list [list classes [parameter::get -localize -parameter classes_pretty_plural]] [_ dotlrn.Edit]]
+set title "[_ dotlrn.Edit] [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter classes_pretty_name] $pretty_name"
+set context_bar [list [list classes [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter classes_pretty_plural]] [_ dotlrn.Edit]]
 
 form create edit_class
 

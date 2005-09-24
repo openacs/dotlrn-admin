@@ -31,7 +31,7 @@ ad_page_contract {
 }
 
 if {[empty_string_p $department_key]} {
-    ad_returnredirect "[dotlrn::get_admin_url]/classes"
+    ad_returnredirect "[dotlrn_admin::get_admin_url]/classes"
     ad_script_abort
 }
 
@@ -43,7 +43,7 @@ if {![db_0or1row select_departments_info {}]} {
 
 set description [ad_quotehtml $description]
 
-set context_bar [list [list departments [parameter::get -localize -parameter departments_pretty_plural]] $pretty_name]
+set context_bar [list [list departments [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_plural]] $pretty_name]
 set referer "[ns_conn url]?[ns_conn query]"
 
 ad_return_template

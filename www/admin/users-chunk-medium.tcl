@@ -35,7 +35,7 @@ if {![exists_and_not_null type]} {
 }
 
 if {![exists_and_not_null referer]} {
-    set referer "[dotlrn::get_admin_url]/users"
+    set referer "[dotlrn_admin::get_admin_url]/users"
 }
 
 set dimension_list {A B C D E F G H I J K L M N O P Q R S T U V W X Y Z}

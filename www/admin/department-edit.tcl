@@ -33,13 +33,13 @@ if {![db_0or1row select_department_info {}]} {
     ad_script_abort
 }
 
-set title "[_ dotlrn.Edit] [parameter::get -localize -parameter departments_pretty_name] $pretty_name"
-set context_bar [list [list departments [parameter::get -localize -parameter departments_pretty_plural]] [_ dotlrn.Edit]]
+set title "[_ dotlrn.Edit] [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_name] $pretty_name"
+set context_bar [list [list departments [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_plural]] [_ dotlrn.Edit]]
 
 form create edit_department
 
 element create edit_department department_key \
-    -label "[parameter::get -localize -parameter departments_pretty_name] [_ dotlrn.lt_Key_a_short_name_no_s]" \
+    -label "[parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_name] [_ dotlrn.lt_Key_a_short_name_no_s]" \
     -datatype text \
     -widget hidden \
     -value $department_key

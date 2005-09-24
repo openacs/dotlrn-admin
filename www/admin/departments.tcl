@@ -27,13 +27,13 @@ ad_page_contract {
     departments:multirow
 }
 
-set title [parameter::get -localize -parameter departments_pretty_plural]
-set context_bar [parameter::get -localize -parameter departments_pretty_plural]
+set title [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_plural]
+set context_bar [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_plural]
 set referer departments
 set can_create [dotlrn_class::can_create]
-set departments_pretty_name [parameter::get -localize -parameter departments_pretty_name]
-set departments_pretty_plural [parameter::get -localize -parameter departments_pretty_plural]
-set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name]
+set departments_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_name]
+set departments_pretty_plural [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_plural]
+set classes_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter classes_pretty_name]
 
 db_multirow departments select_departments {}
 

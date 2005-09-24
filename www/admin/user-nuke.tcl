@@ -7,7 +7,7 @@ ad_page_contract {
     @version $Id$
 } {
     user_id:integer,notnull
-    {referer "[dotlrn::get_admin_url]/users"}
+    {referer "[dotlrn_admin::get_admin_url]/users"}
 }
 
 db_1row select_user_info {

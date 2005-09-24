@@ -68,8 +68,8 @@ set can_create [dotlrn_class::can_create]
 set can_instantiate [dotlrn_class::can_instantiate]
 
 # Used in the en_US versions of some of the messages in the adp
-set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name]
-set classes_pretty_plural [parameter::get -localize -parameter classes_pretty_plural]
-set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
+set classes_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter classes_pretty_name]
+set classes_pretty_plural [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter classes_pretty_plural]
+set class_instances_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_name]
 
 ad_return_template

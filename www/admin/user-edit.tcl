@@ -22,7 +22,7 @@ ad_page_contract {
     @creation-date 2001-12-10
     @version $Id$
 } -query {
-    {return_url "[dotlrn::get_admin_url]/users"}
+    {return_url "[dotlrn_admin::get_admin_url]/users"}
     user_id
 }
 
