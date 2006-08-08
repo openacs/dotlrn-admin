@@ -29,7 +29,7 @@ ad_page_contract {
     clubs:multirow
 }
 
-set title [parameter::get -localize -parameter clubs_pretty_plural]
+set title [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter clubs_pretty_plural]
 set context_bar [list $title]
 
 db_multirow clubs select_clubs {} {
@@ -37,7 +37,7 @@ db_multirow clubs select_clubs {} {
 }
 
 # Some of the en_US messages in the adp use these variables
-set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
-set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
+set clubs_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter clubs_pretty_name]
+set clubs_pretty_plural [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter clubs_pretty_plural]
 
 ad_return_template

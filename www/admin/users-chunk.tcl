@@ -28,7 +28,7 @@ set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
 set user_id [ad_conn user_id]
 
 if {![exists_and_not_null referer]} {
-    set referer "[dotlrn::get_admin_url]/users"
+    set referer "[dotlrn_admin::get_admin_url]/users"
 }
 
 ad_return_template

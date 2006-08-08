@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     user_id
-    {referer "[dotlrn::get_admin_url]/users"}
+    {referer "[dotlrn_admin::get_admin_url]/users"}
 }
 
 set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.New]]

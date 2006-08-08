@@ -17,7 +17,7 @@ ad_page_contract {
     @creation-date 2002-03-05
     @version $Id$
 } -query {
-    {referer [dotlrn::get_admin_url]}
+    {referer [dotlrn_admin::get_admin_url]}
 } -properties {
     context_bar:onevalue
 }

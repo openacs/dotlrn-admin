@@ -62,7 +62,7 @@
     <tr bgcolor="#eeeeee">
       <th align="left" width="50%">
 <formtemplate id="department_form">
-        <%= [parameter::get -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+        <%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
 </formtemplate>
       </th>
       <th align="left" width="50%">
@@ -77,12 +77,12 @@
 
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
     <tr>
-      <th align="left" width="20%"><%= [parameter::get -localize -parameter departments_pretty_name] %></th>
-      <th align="left" width="20%"><%= [parameter::get -localize -parameter classes_pretty_name] %></th>
+      <th align="left" width="20%"><%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_name] %></th>
+      <th align="left" width="20%"><%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter classes_pretty_name] %></th>
 <if @term_id@ eq -1>
       <th align="left" width="10%">#dotlrn.term#</th>
 </if>
-      <th align="left" width="25%"><%= [parameter::get -localize -parameter class_instances_pretty_name] %></th>
+      <th align="left" width="25%"><%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_name] %></th>
       <th align="center" width="10%">#dotlrn.members#</th>
       <th align="center">#dotlrn.actions#</th>
     </tr>

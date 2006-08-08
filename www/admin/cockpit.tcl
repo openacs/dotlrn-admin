@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 }
 
-set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
+set admin_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter dotlrn_admin_pretty_name]
 
 # Does Developer support exists
 set ds_exists_p 0

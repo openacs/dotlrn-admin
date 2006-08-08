@@ -32,10 +32,10 @@
   <li><a href="dotlrn-admins">#dotlrn.Administrators#</a></li> 
   <li><a href="users">#dotlrn.users#</a></li>
   <li><a href="terms">#dotlrn.terms#</a></li>
-  <li><a href="departments"><%= [parameter::get -localize -parameter departments_pretty_plural] %></a></li>
-  <li><a href="classes"><%= [parameter::get -localize -parameter classes_pretty_plural] %></a></li>
-  <li><a href="term?term_id=-1"><%= [parameter::get -localize -parameter class_instances_pretty_plural] %></a></li>
-  <li><a href="clubs"><%= [parameter::get -localize -parameter clubs_pretty_plural] %></a></li> 
+  <li><a href="departments"><%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter departments_pretty_plural] %></a></li>
+  <li><a href="classes"><%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter classes_pretty_plural] %></a></li>
+  <li><a href="term?term_id=-1"><%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_plural] %></a></li>
+  <li><a href="clubs"><%= [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter clubs_pretty_plural] %></a></li> 
   <li><a href="portal-templates">#dotlrn.portal_templates#</a></li>
   <li><a href="archived-communities">#dotlrn.archived_classes_and_communities#</a></li>
   <li><a href="edit-preapproved-emails">#dotlrn.edit_approved_email_servers#</a></li>
