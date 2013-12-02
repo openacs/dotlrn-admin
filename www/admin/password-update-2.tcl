@@ -34,7 +34,7 @@ set body "[_ dotlrn.lt_Please_follow_the_fol]"
 set email [acs_user::get_element -user_id $user_id -element email]
 
 # Send email
-if [catch {ns_sendmail $email $system_owner $subject $body} errmsg] {
+if [catch {acs_mail_lite::send -to_addr $email -from_addr $system_owner -subject $subject -body $body} errmsg] {
 	ns_log Error "[_ dotlrn.lt_Error_sending_email_t]" $errmsg
 	ad_return_error \
         "[_ dotlrn.Error_sending_mail]" \
@@ -46,7 +46,7 @@ if [catch {ns_sendmail $email $system_owner $subject $body} errmsg] {
     set admin_message "[_ dotlrn.lt_The_following_email_w_1]"
 
 
-    if [catch {ns_sendmail $system_owner $system_owner $admin_subject $admin_message} errmsg] {
+    if [catch {acs_mail_lite::send -to_addr $system_owner -from_addr $system_owner -subject $admin_subject -body $admin_message} errmsg] {
 	
 	ns_log Error "Error sending email from password-update-2.tcl" $errmsg
 	ad_return_error \

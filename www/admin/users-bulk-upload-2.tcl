@@ -117,7 +117,7 @@ db_transaction {
             set subject [_ dotlrn.user_add_confirm_email_subject $msg_subst_list] 
 
             # Send note to new user
-            if [catch {ns_sendmail "$row(email)" "$admin_email" "$subject" "$message"} errmsg] {
+            if [catch {acs_mail_lite::send -to_addr $row(email) -from_addr $admin_email -subject $subject -body $message} errmsg] {
                 doc_body_append "[_ dotlrn.lt_emailing_this_user_fa]"
                 set fail_p 1
             } else {
@@ -148,7 +148,7 @@ Login: $email
 Password: $password
 "
         # Send note to new user
-        if [catch {ns_sendmail "$email" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]" "$message"} errmsg] {
+        if [catch {acs_mail_lite::send -to_addr $email -from_addr $admin_email -subject "You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]" -body $message} errmsg] {
             doc_body_append "emailing \"$email\" failed!<br>"
             set fail_p 1
         } else {
