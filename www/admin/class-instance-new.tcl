@@ -91,7 +91,7 @@ if {[form is_valid add_class_instance]} {
         -join_policy $join_policy \
     ]
 
-    if {[empty_string_p $referer]} {
+    if {$referer eq ""} {
         set referer "class?class_key=$class_key"
     }
 

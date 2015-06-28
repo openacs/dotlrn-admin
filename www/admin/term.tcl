@@ -85,11 +85,11 @@ if {[form is_valid term_form]} {
     form get_values term_form term_id department_key
 
     if {$term_id != -1} {
-        ad_returnredirect "term?[export_vars {term_id department_key}]"
+        ad_returnredirect [export_vars -base term {term_id department_key}]
     }
 }
 
-if {![exists_and_not_null referer]} {
+if {(![info exists referer] || $referer eq "")} {
     set referer "terms"
 }
 
@@ -97,7 +97,7 @@ set query "select_classes"
 if {$term_id == -1} {
     set query "select_all_classes"
 }
-if {![empty_string_p $department_key]} {
+if {$department_key ne ""} {
     append query "_by_department"
 }
 

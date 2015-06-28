@@ -26,7 +26,7 @@ ad_page_contract {
     classes:multirow
 }
 
-if {![exists_and_not_null department_key]} {
+if {![info exists department_key] || $department_key eq ""} {
     set department_key ""
 }
 
@@ -53,12 +53,12 @@ if {[form is_valid department_form]} {
     form get_values department_form department_key
 }
 
-if {![exists_and_not_null referer]} {
-    set referer "classes?[export_vars department_key]"
+if {![info exists referer] || $referer eq ""} {
+    set referer [export_vars -base classes department_key]
 }
 
 set query select_classes
-if {![empty_string_p $department_key]} {
+if {$department_key ne ""} {
     set query select_classes_by_department
 }
 

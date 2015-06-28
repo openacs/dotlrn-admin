@@ -58,7 +58,7 @@ db_transaction {
 
         # Check if this user already exists
         set user_id [cc_lookup_email_user $row(email)]
-        if {![empty_string_p $user_id]} {
+        if {$user_id ne ""} {
             doc_body_append [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
             lappend list_of_user_ids $user_id
         } else {
@@ -110,14 +110,14 @@ db_transaction {
             
             doc_body_append [_ dotlrn.user_email_created [list user_email $row(email)]]
             set msg_subst_list [list system_name [ad_system_name] \
-                                     system_url [ad_parameter SystemUrl] \
+                                     system_url [parameter::get -parameter SystemUrl] \
                                      user_email $row(email) \
                                      user_password $password]
             set message [_ dotlrn.user_add_confirm_email_body $msg_subst_list] 
             set subject [_ dotlrn.user_add_confirm_email_subject $msg_subst_list] 
 
             # Send note to new user
-            if [catch {acs_mail_lite::send -to_addr $row(email) -from_addr $admin_email -subject $subject -body $message} errmsg] {
+            if {[catch {acs_mail_lite::send -to_addr $row(email) -from_addr $admin_email -subject $subject -body $message} errmsg]} {
                 doc_body_append "[_ dotlrn.lt_emailing_this_user_fa]"
                 set fail_p 1
             } else {
@@ -140,15 +140,15 @@ set fail_p 0
 doc_body_append "<p>Sending email notifications to users...<p>"
 
 foreach {email password} $list_of_addresses_and_passwords {
-    if { ![string equal $password ""] } {
+    if { $password ne "" } {
         set message "
-You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL].
+You have been added as a user to [ad_system_name] at [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL].
             
 Login: $email
 Password: $password
 "
         # Send note to new user
-        if [catch {acs_mail_lite::send -to_addr $email -from_addr $admin_email -subject "You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]" -body $message} errmsg] {
+        if [catch {acs_mail_lite::send -to_addr $email -from_addr $admin_email -subject "You have been added as a user to [ad_system_name] at [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL]" -body $message} errmsg] {
             doc_body_append "emailing \"$email\" failed!<br>"
             set fail_p 1
         } else {

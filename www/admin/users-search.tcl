@@ -64,16 +64,16 @@ if {[form is_valid user_search_results]} {
 
     switch -exact $search_action {
         "spam" {
-            ad_returnredirect "users-spam?[export_vars {{users $selected_users}}]"
+            ad_returnredirect [export_vars -base users-spam {{users $selected_users}}]
         }
         "add_to_community" {
-            ad_returnredirect "users-add-to-community?[export_vars {{users $selected_users}}]"
+            ad_returnredirect [export_vars -base users-add-to-community {{users $selected_users}}]
         }
         "deactivate" {
-            ad_returnredirect "users-deactivate?[export_vars {{users $selected_users}}]"
+            ad_returnredirect [export_vars -base users-deactivate {{users $selected_users}}]
         }
         "delete" {
-            ad_returnredirect "users-delete?[export_vars {{users $selected_users}}]"
+            ad_returnredirect [export_vars -base users-delete {{users $selected_users}}]
         }
     }
 }
@@ -149,7 +149,7 @@ if {[form is_valid user_search]} {
     form get_values user_search \
         id type can_browse_p guest_p last_visit_greater last_visit_less name join_criteria
 
-    if {([string equal "and" $join_criteria] == 0) && ([string equal "or" $join_criteria] == 0)} {
+    if {("and" ne $join_criteria ) && ("or" ne $join_criteria )} {
         ad_return_error \
             "[_ dotlrn.lt_There_was_a_bug_in_th]" \
             "[_ dotlrn.lt_There_was_a_bug_in_th_1]"
@@ -168,16 +168,16 @@ if {[form is_valid user_search]} {
     ]
     set wheres [list]
 
-    if {![empty_string_p $name]} {
+    if {$name ne ""} {
         lappend wheres "(lower(dotlrn_users.last_name) like lower('%' || :name || '%') or lower(dotlrn_users.first_names) like lower('%' || :name || '%') or lower(dotlrn_users.email) like lower('%' || :name || '%'))"
     }
 
-    if {![empty_string_p $id]} {
+    if {$id ne ""} {
         lappend wheres "(lower(dotlrn_users.id) like lower('%' || :id || '%'))"
     }
 
-    if {![empty_string_p $type]} {
-        if {[string equal "any" $type] == 1} {
+    if {$type ne ""} {
+        if {"any" eq $type} {
             lappend wheres "dotlrn_users.type in (\'[join [dotlrn::get_user_types] \',\']\')"
         } else {
             lappend wheres "dotlrn_users.type = :type"
@@ -204,15 +204,15 @@ if {[form is_valid user_search]} {
         }
     }
 
-    if {![empty_string_p $last_visit_greater]} {
-        if {[lsearch -exact $tables "users"] == -1} {
+    if {$last_visit_greater ne ""} {
+        if {"users" ni $tables} {
             lappend tables "users"
         }
         lappend wheres "(dotlrn_users.user_id = users.user_id and users.last_visit <= (sysdate - :last_visit_greater))"
     }
 
-    if {![empty_string_p $last_visit_less]} {
-        if {[lsearch -exact $tables "users"] == -1} {
+    if {$last_visit_less ne ""} {
+        if {"users" ni $tables} {
             lappend tables "users"
         }
         lappend wheres "(dotlrn_users.user_id = users.user_id and users.last_visit >= (sysdate - :last_visit_less))"
@@ -222,7 +222,7 @@ if {[form is_valid user_search]} {
     set role_list_length [llength $role_list]
 
     if {$role_list_length} {
-        if {[lsearch -exact $tables "acs_rels"] == -1} {
+        if {"acs_rels" ni $tables} {
             lappend tables "acs_rels"
         }
         set in_clause "(dotlrn_users.user_id = acs_rels.object_id_two and acs_rels.rel_type in ("
@@ -255,7 +255,8 @@ if {[form is_valid user_search]} {
     set selected_users_options [list]
     set selected_users_values [list]
     db_foreach select_users $sql {
-        lappend selected_users_options [list "<a href=\"user?[export_vars user_id]\">$last_name, $first_names</a> ($email)" $user_id]
+	set href [export_vars -base user user_id]
+        lappend selected_users_options [list [subst {<a href="[ns_quotehtml $href]">$last_name, $first_names</a> ($email)}] $user_id]
         lappend selected_users_values $user_id
     }
 

@@ -84,7 +84,7 @@ if {[form is_valid add_user]} {
     set subject "Your [ad_system_name] membership has been approved"
     set message "Your [ad_system_name] membership has been approved. Please return to [ad_url] to log into [ad_system_name]."
 
-    set email_from [ad_parameter -package_id [ad_acs_kernel_id] SystemOwner]
+    set email_from [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemOwner]
 
     db_transaction {
 
@@ -100,7 +100,7 @@ if {[form is_valid add_user]} {
     }
     
     
-    if [catch {acs_mail_lite::send -to_addr $email -from_addr $email_from -subject $subject -body $message} errmsg] {
+    if {[catch {acs_mail_lite::send -to_addr $email -from_addr $email_from -subject $subject -body $message} errmsg]} {
 	
 	ns_log Error "Error sending email from user-new-2.tcl" $errmsg
 	ad_return_error \
@@ -118,7 +118,7 @@ Subject: $subject
 Message: $message"
 
 
-        if [catch {acs_mail_lite::send -to_addr $email_from -from_addr $email_from -subject $admin_subject -body $admin_message} errmsg] {
+        if {[catch {acs_mail_lite::send -to_addr $email_from -from_addr $email_from -subject $admin_subject -body $admin_message} errmsg]} {
 	
 	    ns_log Error "Error sending email from user-new-2.tcl" $errmsg
 	    ad_return_error \

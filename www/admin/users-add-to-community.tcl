@@ -70,7 +70,7 @@ if {[form is_valid select_community]} {
     form get_values select_community \
         users community_id
 
-    if {![empty_string_p $community_id]} {
+    if {$community_id ne ""} {
         db_transaction {
             foreach user $users {
                 dotlrn_community::add_user $community_id $user
@@ -87,8 +87,8 @@ if {[form is_valid select_community]} {
             }
         }
 
-        set subject "You have been added to the \"$community_name\" community at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]"
-        set message "To visit the community's home page, point your browser at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL],
+        set subject "You have been added to the \"$community_name\" community at [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL]"
+        set message "To visit the community's home page, point your browser at [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL],
 log in, and click on the \"$community_name\" link in the \"Groups\" portlet.
 "
 

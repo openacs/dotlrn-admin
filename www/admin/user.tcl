@@ -43,7 +43,7 @@ ad_page_contract {
 
 set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
 
-set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
+set return_url "[parameter::get -package_id [ad_acs_kernel_id] -parameter CommunityMemberAdminURL]?user_id=$user_id"
 set export_edit_vars "user_id=$user_id&return_url=$return_url"
 
 set dotlrn_url [dotlrn::get_url]
@@ -52,11 +52,11 @@ if {![db_0or1row select_user_info {}]} {
     ad_return_complaint 1 "<li>[_ dotlrn.couldnt_find_user_id [list user_id $user_id]]</li>"
     ad_script_abort
 }
-if {[empty_string_p $screen_name]} {
+if {$screen_name eq ""} {
     set screen_name "&lt;[_ dotlrn.none_set_up]&gt;"
 }
 set registration_date [lc_time_fmt $registration_date "%q"]
-if {![empty_string_p $last_visit]} {
+if {$last_visit ne ""} {
     set last_visit [lc_time_fmt $last_visit "%q"]
 }
 
@@ -68,7 +68,7 @@ if {[db_0or1row select_dotlrn_user_info {}]} {
 set can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
 
 set portrait_p 0
-if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info {}]} {
+if {[parameter::get -parameter "show_portrait_p"] && [db_0or1row select_portrait_info {}]} {
     set portrait_p 1
 }
 
@@ -96,7 +96,8 @@ set dual_approve_return_url [ns_urlencode [dotlrn_admin::get_admin_url]/user-new
 
 set approve_user_url "/acs-admin/users/member-state-change?user_id=$user_id&member_state=approved&return_url=$dual_approve_return_url"
 
-set remove_user_url "\[<small><a href=\"[export_vars -base user-nuke {user_id}]\">Nuke</a></small>\]"
+set href [export_vars -base user-nuke {user_id}]
+set remove_user_url [subst {\[<small><a href="[ns_quotehtml $href]">Nuke</a></small>\]}]
 
 # Used in some en_US messages in the adp file
 set class_instances_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_name]

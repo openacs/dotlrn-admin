@@ -30,7 +30,7 @@ ad_page_contract {
     classes:multirow
 }
 
-if {[empty_string_p $department_key]} {
+if {$department_key eq ""} {
     ad_returnredirect "[dotlrn_admin::get_admin_url]/classes"
     ad_script_abort
 }
