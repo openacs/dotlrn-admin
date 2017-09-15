@@ -42,7 +42,7 @@
   <li><a href="@parameters_url@">#dotlrn.edit_parameters#</a></li>
   <li><a href="@parameters_d_url@">#dotlrn.edit_community_parameters#</a></li>
   <p>
-  <if @oacs_site_wide_admin_p@ true>
+  <if @oacs_site_wide_admin_p;literal@ true>
     <li><a href="/acs-admin/">OpenACS Site-Wide Administration</a></li>
   </if>
   </p>

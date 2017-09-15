@@ -29,7 +29,7 @@
   <li>
     #dotlrn.Person_name#
     @first_names@ @last_name@
-  <if @oacs_site_wide_admin_p@ true> 
+  <if @oacs_site_wide_admin_p;literal@ true> 
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </if>
   </li>
@@ -37,7 +37,7 @@
   <li>
     #dotlrn.Email#
     <a href="mailto:@email@">@email@</a>
-  <if @oacs_site_wide_admin_p@ true>
+  <if @oacs_site_wide_admin_p;literal@ true>
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </if> 
   </li>
@@ -45,7 +45,7 @@
   <li>
     #dotlrn.Screen_name#
     @screen_name@
-  <if @oacs_site_wide_admin_p@ true>
+  <if @oacs_site_wide_admin_p;literal@ true>
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </if>
   </li>
@@ -72,7 +72,7 @@
   </li>
 </else>
 
-<if @portrait_p@ eq 1>
+<if @portrait_p;literal@ true>
   <li>
     #dotlrn.Portrait# <a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a>
   </li>
@@ -81,7 +81,7 @@
   <li>
     #dotlrn.Member_state#
     @member_state@
-  <if @oacs_site_wide_admin_p@ true> 
+  <if @oacs_site_wide_admin_p;literal@ true> 
     @change_state_links;noquote@
   </if>
   </li>
@@ -90,7 +90,7 @@
 
 <h3>#dotlrn.dotLRN_Information#</h3>
 
-<if @dotlrn_user_p@>
+<if @dotlrn_user_p;literal@ true>
 
 <ul>
 
@@ -101,13 +101,13 @@
 
   <li>
     #dotlrn.Access_level#
-    <if @can_browse_p@>#dotlrn.Full# [ <small><a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a> </small>]</if><else>#dotlrn.Limited# [ <small><a href="browse-toggle?user_id=@user_id@&can_brow
+    <if @can_browse_p;literal@ true>#dotlrn.Full# [ <small><a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a> </small>]</if><else>#dotlrn.Limited# [ <small><a href="browse-toggle?user_id=@user_id@&can_brow
 se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
   </li>
 
   <li>
     #dotlrn.Guest#
-    <if @guest_p@ eq t>#dotlrn.Yes# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a> </small>]</if><else>#dotlrn.No# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a> </small>]</else>
+    <if @guest_p;literal@ true>#dotlrn.Yes# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a> </small>]</if><else>#dotlrn.No# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a> </small>]</else>
   </li>
 
   <li>
@@ -191,11 +191,11 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
 
 <ul>
   <li><a href="password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
-  <if @portrait_p@>
+  <if @portrait_p;literal@ true>
     <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
   </if>
 
- <if @oacs_site_wide_admin_p@ true>
+ <if @oacs_site_wide_admin_p;literal@ true>
   <li><a href="/acs-admin/users/become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
  </if> 
 </ul>
