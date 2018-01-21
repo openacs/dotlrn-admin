@@ -86,10 +86,11 @@ if {[form is_valid term_form]} {
 
     if {$term_id != -1} {
         ad_returnredirect [export_vars -base term {term_id department_key}]
+	ad_script_abort
     }
 }
 
-if {(![info exists referer] || $referer eq "")} {
+if {![info exists referer] || $referer eq ""} {
     set referer "terms"
 }
 
@@ -117,6 +118,16 @@ if {$term_id == -1} {
 }
 
 # Used by the en_US version of the no_class_instances message in the adp
-set class_instances_pretty_plural [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter class_instances_pretty_plural]
+set class_instances_pretty_plural [parameter::get \
+				       -package_id [dotlrn::get_package_id] \
+				       -localize \
+				       -parameter class_instances_pretty_plural]
 
 ad_return_template
+
+#
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

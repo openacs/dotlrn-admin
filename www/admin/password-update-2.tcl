@@ -49,8 +49,8 @@ ad_try {
 }
 
 set system_name [ad_system_name]
-set admin_subject "[_ dotlrn.lt_The_following_email_w]"
-set admin_message "[_ dotlrn.lt_The_following_email_w_1]"
+set admin_subject [_ dotlrn.lt_The_following_email_w]
+set admin_message [_ dotlrn.lt_The_following_email_w_1]
 
 ad_try {
     acs_mail_lite::send \
@@ -61,8 +61,8 @@ ad_try {
 } on error {errorMsg} {
     ns_log Error "Error sending email from password-update-2.tcl $errorMsg"
     ad_return_error \
-	"[_ dotlrn.Error_sending_mail]" \
-	"[_ dotlrn.lt_There_was_an_error_se_1]"
+	[_ dotlrn.Error_sending_mail] \
+	[_ dotlrn.lt_There_was_an_error_se_1]
     ad_script_abort
 }
 
@@ -71,3 +71,11 @@ if {$return_url eq ""} {
 }
 
 ad_returnredirect $return_url
+ad_script_abort
+
+#
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

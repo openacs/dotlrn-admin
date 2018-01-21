@@ -14,8 +14,6 @@
 #  details.
 #
 
-# dotlrn/www/admin/site-wide-admin-toggle.tcl
-
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date Jan 12, 2002
@@ -42,6 +40,13 @@ if {$value eq "grant"} {
 }
 
 util_memoize_flush_regexp  $user_id
+
 ad_returnredirect $referer
+ad_script_abort
 
-
+#
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
