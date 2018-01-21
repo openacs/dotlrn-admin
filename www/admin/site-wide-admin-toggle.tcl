@@ -25,12 +25,11 @@ ad_page_contract {
 }
 
 if { ![acs_user::site_wide_admin_p] } {
-             ns_log notice "user has tried to site-wide-admin-toggle  without permission"
-        ad_return_forbidden \
-               "Permission Denied" \
-               "<blockquote>
-                You don't have permission to see this page.
-               </blockquote>"
+    ns_log notice "user has tried to site-wide-admin-toggle  without permission"
+    ad_return_forbidden \
+        "Permission Denied" \
+        "<blockquote>You don't have permission to see this page.</blockquote>"
+    ad_script_abort
 }
 
 if {$value eq "grant"} {
