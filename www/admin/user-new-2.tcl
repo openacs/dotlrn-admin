@@ -104,12 +104,12 @@ if {[form is_valid add_user]} {
 	
 	ns_log Error "Error sending email from user-new-2.tcl" $errmsg
 	ad_return_error \
-        "Error sending mail" \
-        "There was an error sending email to $email."
+	    "Error sending mail" \
+	    "There was an error sending email to $email."
+	ad_script_abort
     } else {
 
 	set admin_subject "The following email was just sent from [ad_system_name]"
-
 	set admin_message "The following email was just sent from [ad_system_name]
 
 Sent by: $email_from
@@ -122,8 +122,9 @@ Message: $message"
 	
 	    ns_log Error "Error sending email from user-new-2.tcl" $errmsg
 	    ad_return_error \
-		    "Error sending mail" \
-		    "There was an error sending email to $email."
+		"Error sending mail" \
+		"There was an error sending email to $email."
+	    ad_script_abort
 	}
 
     }

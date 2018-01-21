@@ -34,27 +34,37 @@ set body "[_ dotlrn.lt_Please_follow_the_fol]"
 set email [acs_user::get_element -user_id $user_id -element email]
 
 # Send email
-if {[catch {acs_mail_lite::send -to_addr $email -from_addr $system_owner -subject $subject -body $body} errmsg]} {
-	ns_log Error "[_ dotlrn.lt_Error_sending_email_t]" $errmsg
-	ad_return_error \
-        "[_ dotlrn.Error_sending_mail]" \
-        "[_ dotlrn.lt_There_was_an_error_se]" 
-} else {
-
-    set system_name [ad_system_name]
-    set admin_subject "[_ dotlrn.lt_The_following_email_w]"
-    set admin_message "[_ dotlrn.lt_The_following_email_w_1]"
-
-
-    if {[catch {acs_mail_lite::send -to_addr $system_owner -from_addr $system_owner -subject $admin_subject -body $admin_message} errmsg]} {
-	
-	ns_log Error "Error sending email from password-update-2.tcl" $errmsg
-	ad_return_error \
-		"[_ dotlrn.Error_sending_mail]" \
-		"[_ dotlrn.lt_There_was_an_error_se_1]"
-    }
+ad_try {
+    acs_mail_lite::send \
+	-to_addr $email \
+	-from_addr $system_owner \
+	-subject $subject \
+	-body $body
+} on error {errorMsg} {
+    ns_log Error "[_ dotlrn.lt_Error_sending_email_t] $errorMsg"
+    ad_return_error \
+	"[_ dotlrn.Error_sending_mail]" \
+	"[_ dotlrn.lt_There_was_an_error_se]"
+    ad_script_abort
 }
 
+set system_name [ad_system_name]
+set admin_subject "[_ dotlrn.lt_The_following_email_w]"
+set admin_message "[_ dotlrn.lt_The_following_email_w_1]"
+
+ad_try {
+    acs_mail_lite::send \
+	-to_addr $system_owner \
+	-from_addr $system_owner \
+	-subject $admin_subject \
+	-body $admin_message
+} on error {errorMsg} {
+    ns_log Error "Error sending email from password-update-2.tcl $errorMsg"
+    ad_return_error \
+	"[_ dotlrn.Error_sending_mail]" \
+	"[_ dotlrn.lt_There_was_an_error_se_1]"
+    ad_script_abort
+}
 
 if {$return_url eq ""} {
     set return_url "user?user_id=$user_id"

@@ -65,15 +65,19 @@ if {[form is_valid user_search_results]} {
     switch -exact $search_action {
         "spam" {
             ad_returnredirect [export_vars -base users-spam {{users $selected_users}}]
+	    ad_script_abort
         }
         "add_to_community" {
             ad_returnredirect [export_vars -base users-add-to-community {{users $selected_users}}]
+	    ad_script_abort
         }
         "deactivate" {
             ad_returnredirect [export_vars -base users-deactivate {{users $selected_users}}]
+	    ad_script_abort
         }
         "delete" {
             ad_returnredirect [export_vars -base users-delete {{users $selected_users}}]
+	    ad_script_abort
         }
     }
 }
@@ -149,10 +153,11 @@ if {[form is_valid user_search]} {
     form get_values user_search \
         id type can_browse_p guest_p last_visit_greater last_visit_less name join_criteria
 
-    if {("and" ne $join_criteria ) && ("or" ne $join_criteria )} {
+    if {"and" ne $join_criteria  && "or" ne $join_criteria } {
         ad_return_error \
             "[_ dotlrn.lt_There_was_a_bug_in_th]" \
             "[_ dotlrn.lt_There_was_a_bug_in_th_1]"
+	ad_script_abort
     }
 
     set context_bar [list [list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Results]]
