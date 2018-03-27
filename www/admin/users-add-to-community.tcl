@@ -93,7 +93,7 @@ log in, and click on the \"$community_name\" link in the \"Groups\" portlet.
 "
 
         spam::send \
-          -recepients $users \
+          -recipients $users \
           -from $sender_email \
           -real_from $sender_email \
           -subject $subject \
