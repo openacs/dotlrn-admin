@@ -33,7 +33,7 @@ set title [parameter::get -package_id [dotlrn::get_package_id] -localize -parame
 set context_bar [list $title]
 
 db_multirow clubs select_clubs {} {
-    set description [ad_quotehtml $description]
+    set description [ns_quotehtml $description]
 }
 
 # Some of the en_US messages in the adp use these variables

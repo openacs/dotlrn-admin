@@ -79,7 +79,7 @@ if {[form is_valid select_community]} {
 
         # Now notify the users that they've been added to the community.
 
-        set sender_email [cc_email_from_party [ad_conn user_id]]
+        set sender_email [party::email -party_id [ad_conn user_id]]
         foreach {community} $communities {
             if { $community_id == [lindex $community 1] } {
                 set community_name [lindex $community 0]

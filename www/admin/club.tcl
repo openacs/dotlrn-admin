@@ -34,7 +34,7 @@ ad_page_contract {
 
 db_1row select_club {}
 
-set description [ad_quotehtml $description]
+set description [ns_quotehtml $description]
 
 set context_bar [list [list clubs [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter clubs_pretty_plural]] $pretty_name]
 

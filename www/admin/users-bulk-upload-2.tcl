@@ -57,7 +57,7 @@ db_transaction {
         set password [ad_generate_random_string]
 
         # Check if this user already exists
-        set user_id [cc_lookup_email_user $row(email)]
+        set user_id [party::get_by_email -email $row(email)]
         if {$user_id ne ""} {
             doc_body_append [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
             lappend list_of_user_ids $user_id
