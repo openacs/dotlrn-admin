@@ -79,7 +79,7 @@ template::list::create \
     }
 
 
-set users [list]
+set users {}
 
 set count 0
 
