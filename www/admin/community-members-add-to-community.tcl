@@ -97,7 +97,7 @@ if {[form is_valid select_community]} {
                                 #ReturnHeaders
                                 ad_return_error \
 				    "[_ dotlrn.lt_Error_adding_user_to_]"  \
-				    "[_ dotlrn.lt_An_error_occured_whil]"
+				    "[_ dotlrn.lt_An_error_occurred_whil]"
                             }
 			    ad_script_abort
                         }
