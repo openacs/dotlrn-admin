@@ -2,7 +2,7 @@ ad_page_contract {
     Let's the admin change a user's password.
    
 
-    @version $Id$
+    @cvs-id $Id$
 } {
     {user_id:integer}
     {return_url ""}

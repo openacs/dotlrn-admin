@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author Nima Mazloumi (mazloumi@uni-mannheim.d)
     @creation-date 2004-08-09
-    @version $Id$
+    @cvs-id $Id$
 }
 
 set admin_pretty_name [parameter::get -package_id [dotlrn::get_package_id] -localize -parameter dotlrn_admin_pretty_name]
