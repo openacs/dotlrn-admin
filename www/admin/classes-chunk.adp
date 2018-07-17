@@ -57,7 +57,7 @@
       <th align="center" width="10%">#dotlrn.Actions#</th>
     </tr>
 
-<if @classes:rowcount@ gt 0>
+<if @classes:rowcount;literal@ gt 0>
 <multiple name="classes">
 
 <if @classes.rownum@ odd>

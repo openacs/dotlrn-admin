@@ -123,7 +123,7 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
 
 </ul>
 
-<if @member_classes:rowcount@ gt 0>
+<if @member_classes:rowcount;literal@ gt 0>
   <blockquote>
     <h4>#dotlrn.class_memberships#</h4>
 
@@ -139,7 +139,7 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
   </blockquote>
 </if>
 
-<if @member_clubs:rowcount@ gt 0>
+<if @member_clubs:rowcount;literal@ gt 0>
   <blockquote>
     <h4>#dotlrn.community_memberships#</h4>
 
@@ -154,7 +154,7 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
   </blockquote>
 </if>
 
-<if @member_subgroups:rowcount@ gt 0>
+<if @member_subgroups:rowcount;literal@ gt 0>
   <blockquote>
     <h4>#dotlrn.subcommunity_memberships#</h4>
 

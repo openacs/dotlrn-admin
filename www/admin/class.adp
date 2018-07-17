@@ -87,7 +87,7 @@
       <th align="center" width="10%">#dotlrn.actions#</th>
     </tr>
 
-<if @class_instances:rowcount@ gt 0>
+<if @class_instances:rowcount;literal@ gt 0>
 
 <multiple name="class_instances">
 

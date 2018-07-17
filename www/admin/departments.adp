@@ -43,7 +43,7 @@
       <th align="center" width="10%">#dotlrn.Actions#</th>
     </tr>
 
-    <if @departments:rowcount@ gt 0>
+    <if @departments:rowcount;literal@ gt 0>
 
       <multiple name="departments">
 
@@ -86,7 +86,7 @@
     </else>
   </table>
 
-<if @departments:rowcount@ gt 10>
+<if @departments:rowcount;literal@ gt 10>
   <br>
 
   <table cellpadding="5" width="95%">

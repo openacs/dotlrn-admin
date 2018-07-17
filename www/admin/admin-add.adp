@@ -22,7 +22,7 @@
 <property name="title">#dotlrn.Add_A_Member#</property>
 <property name="context_bar">@context_bar@</property>
 
-<if @users:rowcount@ eq 0>
+<if @users:rowcount;literal@ eq 0>
      #dotlrn.there_are_no_users_matching#
   </tr>
 </if>

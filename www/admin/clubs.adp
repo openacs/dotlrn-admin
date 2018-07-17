@@ -47,7 +47,7 @@
       <th align="center" width="10%">#dotlrn.Actions#</th>
     </tr>
 
-<if @clubs:rowcount@ gt 0>
+<if @clubs:rowcount;literal@ gt 0>
 
 <multiple name="clubs">
 
@@ -81,7 +81,7 @@
 </else>
   </table>
 
-<if @clubs:rowcount@ gt 10>
+<if @clubs:rowcount;literal@ gt 10>
   <br>
 
   <table cellpadding="5" width="95%">

@@ -46,7 +46,7 @@
       <th align="center" width="15%">#dotlrn.Classes#</th>
     </tr>
 
-<if @terms:rowcount@ gt 0>
+<if @terms:rowcount;literal@ gt 0>
 
 <multiple name="terms">
 
@@ -74,7 +74,7 @@
 </else>
   </table>
 
-<if @terms:rowcount@ gt 10>
+<if @terms:rowcount;literal@ gt 10>
   <br>
 
   <table cellpadding="5" width="95%">

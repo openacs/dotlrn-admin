@@ -22,7 +22,7 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-<if @archived_comms:rowcount@ gt 0>
+<if @archived_comms:rowcount;literal@ gt 0>
 <p><small><font color="red">#dotlrn.Note_the_term_column#</font></small></p>
 <table width="100%">
   <tr>
